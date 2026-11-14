@@ -1,5 +1,5 @@
 pipeline { agent any
-          stages {
+stages {
 
     stage('Checkout') {
         steps {
@@ -10,22 +10,22 @@ pipeline { agent any
 
     stage('Build') {
         steps {
-            echo 'Compiling Java application'
-            bat 'javac App.java'
+            echo 'Building Python application'
+            bat '"C:\\Users\\student\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m py_compile app.py'
         }
     }
 
     stage('Test') {
         steps {
-            echo 'Running Java application'
-            bat 'java App'
+            echo 'Testing Python application'
+            bat '"C:\\Users\\student\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" app.py'
         }
     }
 
     stage('Deploy') {
         steps {
-            echo 'Deploying Java application'
-            echo 'Deployment completed successfully'
+            echo 'Deploying Python application'
+            echo 'Python application deployed successfully'
         }
     }
 }
@@ -43,4 +43,5 @@ post {
         echo 'Jenkins pipeline execution completed'
     }
 }
+
 }
